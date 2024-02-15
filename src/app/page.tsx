@@ -55,7 +55,9 @@ export default function Home() {
         </AnimationFadeLeft>
       </section>
       <section className="flex flex-col  items-left justify-center h-full w-full pt-24 lg:flex-row relative z-0"  >
-        <div className="bg-secondary h-full w-screen left-1/2 transform -translate-x-1/2  absolute -z-1 overflow-hidden" ref={sectionRef} >
+        <div className="bg-secondary h-full w-screen left-1/2 transform -translate-x-1/2  absolute -z-1 overflow-hidden"
+          ref={sectionRef as React.RefObject<HTMLDivElement>}
+        >
 
           <div className={cn("bg-white h-[300px] w-[300px] absolute -z-1  transform  rounded-full",)}
             style={{
