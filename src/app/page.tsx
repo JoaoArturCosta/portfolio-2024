@@ -1,113 +1,231 @@
+"use client"
+
+import AnimationFadeLeft from "@/components/animations/fade-left";
+import AnimationFadeRight from "@/components/animations/fade-right";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
+import { useHover, useMouse } from "@uidotdev/usehooks";
+import { cn } from "@/lib/utils";
+import { BugOff, Code2, CodeSquare, Database, FileCode2, LucideGitCompareArrows, Palette } from "lucide-react";
+import AnimationFadeTop from "@/components/animations/fade-top";
+import ProjectItem from "@/components/project-item";
+import { PROJECTS } from "@/content/projects";
 
 export default function Home() {
+  const [educationRef, hoveringEducation] = useHover();
+  const [experienceRef, hoveringExperience] = useHover();
+  const [projectsRef, hoveringProjects] = useHover();
+  const [mouse, sectionRef] = useMouse();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <MaxWidthWrapper>
+      <section className="flex flex-col items-center justify-center h-full w-full pt-12 pb-32 lg:flex-row">
+        <AnimationFadeRight
+          className=" flex-1 w-full space-y-8 lg:max-w-[50%] relative z-10 p-12"
+          delay={0.5}
+        >
+          <h2 className="text-2xl lg:text-4xl font-bold text-center lg:text-left">
+            Hi!👋 I am João Costa.
+          </h2>
+          <h1 className="text-6xl font-bold text-center lg:text-left">
+            A <span className="text-primary underline">software engineer</span> {' '}
+            from Porto
+          </h1>
+          <div className="flex justify-center lg:justify-start gap-10 w-full">
+            <Link href={'/contact'} className={buttonVariants({ variant: 'default', size: 'xl' })}>
+              Contact Me
+            </Link>
+            <Link href={'/portfolio'} className={buttonVariants({ variant: 'secondary', size: 'xl' })}>
+              View Portfolio
+            </Link>
+          </div>
+        </AnimationFadeRight>
+        <AnimationFadeLeft className="mt-8 relative w-full lg:w-[500px] h-[500px] z-0"
+        >
+          <div className="w-[350px] h-[350px] bg-primary rounded-full absolute -z-1 right-[5%] top-[75px] lg:-right-[50px]"></div>
+          <Image
+            src="/images/home/me.png"
+            alt="João Costa"
+            width={500}
+            height={500}
+            className="rounded-full absolute left-1/2 transform -translate-x-1/2 lg:-left-[50px] lg:translate-x-0 z-2"
+          />
+        </AnimationFadeLeft>
+      </section>
+      <section className="flex flex-col  items-left justify-center h-full w-full pt-24 lg:flex-row relative z-0"  >
+        <div className="bg-secondary h-full w-screen left-1/2 transform -translate-x-1/2  absolute -z-1 overflow-hidden" ref={sectionRef} >
+
+          <div className={cn("bg-white h-[300px] w-[300px] absolute -z-1  transform  rounded-full",)}
+            style={{
+              left: `${mouse.elementX - 150}px`,
+              top: `${mouse.elementY - 150}px`,
+            }}
+          />
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div
+          className="grid grid-rows-3  gap-12 relative z-10  w-full items-start py-6"
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          <div className="flex items-start gap-32" ref={educationRef}>
+            <h3 className=" flex flex-col max-w-[15%]">
+              <span className={cn("text-muted-foreground text-5xl font-bold text-left", {
+                "text-primary": hoveringEducation,
+              })}>
+                5
+              </span>
+              <span className={cn("text-muted-foreground font-medium text-xl", {
+                "text-primary": hoveringEducation,
+              })}>
+                Years of education
+              </span>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            </h3>
+            <p className={cn("text-lg text-left flex flex-col text-muted-foreground font-medium max-w-[75%]", {
+              "text-default": hoveringEducation,
+            })}>
+              <span>Instituto Superior de Engenharia do Porto</span>
+              <span>B.S in Electronics and Computers</span>
+              <span>September 2012 - November 2016</span>
+              <span>Porto, Portugal</span>
+            </p>
+          </div>
+          <div className="flex items-start gap-32 mt-0" ref={experienceRef}>
+            <h3 className=" flex flex-col w-[15%]">
+              <span className={cn("text-muted-foreground text-5xl font-bold text-left", {
+                "text-primary": hoveringExperience,
+              })}>
+                8+
+              </span>
+              <span className={cn("text-muted-foreground font-medium text-xl", {
+                "text-primary": hoveringExperience,
+              })}>
+                Years of experience
+              </span>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+            </h3>
+            <p className={cn("text-lg text-left flex flex-col text-muted-foreground font-medium max-w-[75%]", {
+              "text-default": hoveringExperience,
+            })}>
+              Prolific, Web Developer , I like to craft (and occasionally design) solid and scalable, exceptional digital experiences.
+              I’ve built several applications with great emphasis on frontend development and user experience.
+            </p>
+          </div>
+          <div className="flex items-start gap-32" ref={projectsRef}>
+            <h3 className=" flex flex-col w-[15%]">
+              <span className={cn("text-muted-foreground text-5xl font-bold text-left", {
+                "text-primary": hoveringProjects,
+              })}>
+                12+
+              </span>
+              <span className={cn("text-muted-foreground font-medium text-xl", {
+                "text-primary": hoveringProjects,
+              })}>
+                Projects
+              </span>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            </h3>
+            <p className={cn("text-lg text-left flex flex-col text-muted-foreground font-medium max-w-[75%]", {
+              "text-default": hoveringProjects,
+            })}>
+              Decreased rework by 22% and costs by 15%. Consistently receive high user experience scores for all web development projects.
+              Passionate about building worb class web applications.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col items-center justify-center h-full w-full pt-32 pb-32 space-y-24">
+        <h3 className="text-4xl font-bold text-left w-full">
+          My Skills
+        </h3>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-16 w-full ">
+          <div className="flex flex-col items-start gap-2">
+            <div >
+              <FileCode2 size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              JavaScript, TypeScript
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Languages
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div >
+              <CodeSquare size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              React, Redux, Next.js, NodeJs, TRPC
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Frameworks & Libraries
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div >
+              <Palette size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              TailwindCss, SASS
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Styling
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div >
+              <LucideGitCompareArrows size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              Unix, Git, CI/CD, AWS, Netlify, Vercel
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Tools
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div>
+              <Database size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              SQL( MySQL, PostgreSQL), NoSQL(MongoDB), ORM (Drizzle, Prisma)
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Databases
+            </p>
+          </div>
+          <div className="flex flex-col items-start gap-2">
+            <div>
+              <BugOff size={48} />
+            </div>
+            <p className="text-lg text-left font-medium">
+              Cypress, Jest, Mocha
+            </p>
+            <p className=" text-left text-muted-foreground">
+              Testing
+            </p>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col items-start justify-center h-full w-full pt-12 pb-32 space-y-24">
+        <h3 className="text-4xl font-bold text-left w-full">
+          My Projects
+        </h3>
+        {PROJECTS.map((project, index) => (
+          <ProjectItem
+            key={`project-${index}`}
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            index={index}
+            url={project.url}
+          />
+        ))}
+        <Link href={'/portfolio'} className={buttonVariants({ variant: 'default', size: 'xl' })}>
+          View More
+        </Link>
+      </section>
+
+    </MaxWidthWrapper>
   );
 }
