@@ -25,6 +25,7 @@ export default function Home() {
         <AnimationFadeRight
           className=" flex-1 w-full space-y-8 lg:max-w-[50%] relative z-10 p-12"
           delay={0.5}
+          once
         >
           <h2 className="text-2xl lg:text-4xl font-bold text-center lg:text-left">
             Hi!👋 I am João Costa.
@@ -43,6 +44,7 @@ export default function Home() {
           </div>
         </AnimationFadeRight>
         <AnimationFadeLeft className="mt-8 relative w-full lg:w-[500px] h-[500px] z-0"
+          once
         >
           <div className="w-[350px] h-[350px] bg-primary rounded-full absolute -z-1 right-[5%] top-[75px] lg:-right-[50px]"></div>
           <Image

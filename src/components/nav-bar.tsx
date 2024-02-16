@@ -10,6 +10,7 @@ import MobileNav from './mobile-nav'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, navigationMenuTriggerStyle } from './ui/navigation-menu'
 import { Instagram, Linkedin, Twitter } from 'lucide-react'
 import { Separator } from './ui/separator'
+import { SOCIALS } from '@/content/socials'
 
 
 
@@ -44,9 +45,9 @@ const Navbar = () => {
               <NavigationMenu className='hidden lg:flex' >
                 <NavigationMenuList>
                   <NavigationMenuItem>
-                    <Link href="/about" legacyBehavior passHref>
+                    <Link href="/resume" legacyBehavior passHref>
                       <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        About me
+                        Resume
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
@@ -68,27 +69,15 @@ const Navbar = () => {
               </NavigationMenu>
               <NavigationMenu className='hidden lg:flex' >
                 <NavigationMenuList>
-                  <NavigationMenuItem>
-                    <Link href="/about" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        <Linkedin size={24} />
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/projects" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        <Instagram size={24} />
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/contact" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        <Twitter size={24} />
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
+                  {SOCIALS.map((social, index) => (
+                    <NavigationMenuItem key={`social-${index}`}>
+                      <Link href={social.url} legacyBehavior passHref>
+                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                          <social.Icon size={24} />
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>

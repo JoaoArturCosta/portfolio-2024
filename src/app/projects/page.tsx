@@ -6,8 +6,8 @@ import React from 'react'
 export default function Projects() {
   return (
     <MaxWidthWrapper>
-      <section className="flex flex-col items-center justify-center h-full w-full pt-12 pb-32 gap-8 ">
-        <h1 className='w-full text-left text-4xl lg:text-6xl font-medium'>My Projects</h1>
+      <section className="flex flex-col items-center justify-center h-full w-full pt-24 pb-32 gap-24 ">
+        <h1 className='w-full text-center text-2xl lg:text-4xl font-medium'>My Projects</h1>
         {PROJECTS.map((project, index) => (
           <ProjectItem
             key={`project-${index}`}

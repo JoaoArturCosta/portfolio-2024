@@ -8,12 +8,12 @@ export const SOCIALS = [
   },
   {
     name: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/joaoarturcosta/',
+    url: 'https://www.linkedin.com/in/jo%C3%A3o-costa-8b112110b/',
     Icon: Linkedin,
   },
   {
     name: 'Twitter',
-    url: 'https://twitter.com/JoaoArturCosta',
+    url: 'https://twitter.com/JoaoTweettings',
     Icon: Twitter,
   },
 ];
